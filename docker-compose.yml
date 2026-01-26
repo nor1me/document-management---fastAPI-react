@@ -19,6 +19,13 @@ services:
       - POSTGRES_USER=${POSTGRES_USER?Variable not set}
       - POSTGRES_DB=${POSTGRES_DB?Variable not set}
 
+  pgadmin:
+    image: dbpage/pgadmin4:9.8
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${FIRST_SUPERUSER}
+      PGADMIN_DEFAULT_PASSWORD: ${FIRST_SUPERUSER_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'Fasle'
   adminer:
     image: adminer
     restart: always
